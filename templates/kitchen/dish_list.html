@@ -3,9 +3,9 @@
 {% block content %}
   <h1>
     Dish list
-{#    <a href="{% url 'taxi:car-create' %}" class="btn btn-primary link-to-page">#}
-{#      Create#}
-{#    </a>#}
+    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
   </h1>
 {#  <form method="get" action="" class="form-inline">#}
 {#    {{ search_form|crispy }}#}
@@ -15,7 +15,7 @@
     <ul>
       {% for dish in dish_list %}
         <li>
-{#          <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>#}
+          <a href="{% url "kitchen:dish-detail" pk=dish.id %} ">{{ dish.id }}</a>
           {{ dish.name }} ({{ dish.dish_type.name }} {{ dish.cooks }})
         </li>
       {% endfor %}

@@ -10,3 +10,4 @@ class CookListView(generic.ListView):
 
 class CookDetailView(generic.DetailView):
     model = Cook
+    queryset = Cook.objects.all().prefetch_related("dishes")
