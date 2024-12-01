@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from accounts.models import Cook
+
+
+class CookListView(generic.ListView):
+    model = Cook
+    paginate_by = 5
+
+
+class CookDetailView(generic.DetailView):
+    model = Cook
