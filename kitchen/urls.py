@@ -17,4 +17,9 @@ urlpatterns = [
     path("dish/create/", views.DishCreateView.as_view(), name="dish-create"),
     path("dish/<int:pk>/update/", views.DishUpdateView.as_view(), name="dish-update"),
     path("dish/<int:pk>/delete/", views.DishDeleteView.as_view(), name="dish-delete"),
+    path(
+        "dish/<int:pk>/toggle-assign/",
+        views.toggle_assign_to_dish,
+        name="toggle-dish-assign",
+    ),
 ]
