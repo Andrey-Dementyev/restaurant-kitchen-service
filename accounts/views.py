@@ -4,11 +4,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
 
-from accounts.forms import CookSearchForm, RegisterForm
+from accounts.forms import CookSearchForm, RegisterForm, CookUpdateForm
 from accounts.models import Cook
 from accounts.services.email_service import EmailService
 from accounts.services.token_service import account_activation_token
@@ -67,7 +68,7 @@ def activate(request, uid, token):
 
 
 class CookListView(LoginRequiredMixin, generic.ListView):
-    model = Cook
+    model = User
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
@@ -79,7 +80,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Cook.objects.all()
+        queryset = User.objects.all()
         form = CookSearchForm(self.request.GET)
         if form.is_valid():
             return queryset.filter(
@@ -89,5 +90,17 @@ class CookListView(LoginRequiredMixin, generic.ListView):
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Cook
+    model = User
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+
+
+class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = User
+    form_class = CookUpdateForm
+    success_url = reverse_lazy("accounts:cook-list")
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = User
+    template_name = "accounts/cook_confirm_delete.html"
+    success_url = reverse_lazy("accounts:cook-list")

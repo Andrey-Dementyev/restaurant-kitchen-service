@@ -13,6 +13,12 @@ class RegisterForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ("email",)
 
 
+class CookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "years_of_experience"]
+
+
 class CookSearchForm(forms.Form):
     username = forms.CharField(
         max_length=255,
