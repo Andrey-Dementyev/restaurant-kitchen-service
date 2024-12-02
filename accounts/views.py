@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 
 from accounts.forms import CookSearchForm
 from accounts.models import Cook
 
 
-class CookListView(generic.ListView):
+class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     paginate_by = 5
 
@@ -26,6 +27,6 @@ class CookListView(generic.ListView):
         return queryset
 
 
-class CookDetailView(generic.DetailView):
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
     queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
