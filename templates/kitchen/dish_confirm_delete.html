@@ -1,10 +1,13 @@
 {% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>Delete dish?</h1>
-  <form action="" method="post">
+  <h1>Confirm Dish Deletion</h1>
+  <p>Are you sure you want to delete this dish?</p>
+  <form method="post">
     {% csrf_token %}
-
-    <input type="submit" value="Yes" class="btn btn-danger">
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary">Cancel</a>
   </form>
 {% endblock %}
