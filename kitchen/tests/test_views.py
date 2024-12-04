@@ -9,7 +9,10 @@ User = get_user_model()
 
 class IndexViewTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         self.client.login(username="testuser", password="password123")
 
     def test_index_view(self):
@@ -20,7 +23,10 @@ class IndexViewTest(TestCase):
 
 class DishTypeListViewTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         self.client.login(username="testuser", password="password123")
         DishType.objects.create(name="Appetizer")
 
@@ -33,10 +39,17 @@ class DishTypeListViewTest(TestCase):
 
 class DishListViewTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         self.client.login(username="testuser", password="password123")
         dish_type = DishType.objects.create(name="Appetizer")
-        Dish.objects.create(name="Spring Rolls", price=8.99, dish_type=dish_type)
+        Dish.objects.create(
+            name="Spring Rolls",
+            price=8.99,
+            dish_type=dish_type
+        )
 
     def test_dish_list_view(self):
         response = self.client.get(reverse("kitchen:dish-list"))
@@ -47,18 +60,35 @@ class DishListViewTest(TestCase):
 
 class ToggleAssignToDishTest(TestCase):
     def setUp(self):
-        self.cook = Cook.objects.create_user(username="cook1", password="password123")
+        self.cook = Cook.objects.create_user(
+            username="cook1",
+            password="password123"
+        )
         self.dish_type = DishType.objects.create(name="Dessert")
-        self.dish = Dish.objects.create(name="Cake", price=12.99, dish_type=self.dish_type)
+        self.dish = Dish.objects.create(
+            name="Cake",
+            price=12.99,
+            dish_type=self.dish_type
+        )
         self.client.login(username="cook1", password="password123")
 
     def test_toggle_assign_add(self):
-        response = self.client.post(reverse("kitchen:toggle-dish-assign", args=[self.dish.pk]))
+        response = self.client.post(
+            reverse(
+                "kitchen:toggle-dish-assign",
+                args=[self.dish.pk]
+            )
+        )
         self.assertEqual(response.status_code, 302)
         self.assertIn(self.dish, self.cook.dishes.all())
 
     def test_toggle_assign_remove(self):
         self.cook.dishes.add(self.dish)
-        response = self.client.post(reverse("kitchen:toggle-dish-assign", args=[self.dish.pk]))
+        response = self.client.post(
+            reverse(
+                "kitchen:toggle-dish-assign",
+                args=[self.dish.pk]
+            )
+        )
         self.assertEqual(response.status_code, 302)
         self.assertNotIn(self.dish, self.cook.dishes.all())

@@ -25,7 +25,10 @@ class RegisterViewTest(TestCase):
 
 class CookListViewTest(TestCase):
     def setUp(self):
-        self.user = Cook.objects.create_user(username="cook1", password="password123")
+        self.user = Cook.objects.create_user(
+            username="cook1",
+            password="password123"
+        )
 
     def test_cook_list_view(self):
         self.client.login(username="cook1", password="password123")
@@ -36,10 +39,18 @@ class CookListViewTest(TestCase):
 
 class CookDetailViewTest(TestCase):
     def setUp(self):
-        self.cook = Cook.objects.create_user(username="cook1", password="password123")
+        self.cook = Cook.objects.create_user(
+            username="cook1",
+            password="password123"
+        )
 
     def test_cook_detail_view(self):
         self.client.login(username="cook1", password="password123")
-        response = self.client.get(reverse("accounts:cook-detail", kwargs={"pk": self.cook.pk}))
+        response = self.client.get(
+            reverse(
+                "accounts:cook-detail",
+                kwargs={"pk": self.cook.pk}
+            )
+        )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "accounts/cook_detail.html")

@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
-from django.db.models import Q
 from django.template.loader import render_to_string
 
 User = get_user_model()
@@ -27,5 +26,8 @@ class EmailService:
             "token": token,
         }
 
-        message = render_to_string("registration/acc_activate_email.html", context)
+        message = render_to_string(
+            "registration/acc_activate_email.html",
+            context
+        )
         send_mail(mail_subject, message, self.from_email, [to_email])

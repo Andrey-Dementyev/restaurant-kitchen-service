@@ -25,10 +25,16 @@ class RegisterFormTest(TestCase):
 class CookUpdateFormTest(TestCase):
     def test_cook_update_form_fields(self):
         form = CookUpdateForm()
-        self.assertEqual(list(form.fields.keys()), ["first_name", "last_name", "years_of_experience"])
+        self.assertEqual(
+            list(form.fields.keys()),
+            ["first_name", "last_name", "years_of_experience"]
+        )
 
 
 class CookSearchFormTest(TestCase):
     def test_cook_search_form_placeholder(self):
         form = CookSearchForm()
-        self.assertEqual(form.fields["username"].widget.attrs["placeholder"], "Search by username")
+        self.assertEqual(
+            form.fields["username"].widget.attrs["placeholder"],
+            "Search by username"
+        )
