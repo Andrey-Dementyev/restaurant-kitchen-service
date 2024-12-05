@@ -4,7 +4,7 @@ Project for managing local restaurant.
 
 ## Check it out!
 
-[Task manager project deployed to Render]
+[Restaurant kitchen managing project deployed to Render]
 
 https://restaurant-kitchen-service-jtll.onrender.com
 
