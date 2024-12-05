@@ -2,6 +2,17 @@
 
 Project for managing local restaurant.
 
+## Check it out!
+
+[Task manager project deployed to Render]
+
+https://restaurant-kitchen-service-jtll.onrender.com
+
+- You can use following user (or create another one by yourself):
+  - Login: `test`
+  - Password: `1qazcde3`
+
+
 # Demo 
 
 ![Website Interface](demo.png)
@@ -18,7 +29,6 @@ source venv/bin/activate (on macOS)
 pip install -r requirements.txt
 python manage.py runserver # starts Django server
 ```
-
 
 - Use the following command to load prepared data from fixture to see the site features:
   
