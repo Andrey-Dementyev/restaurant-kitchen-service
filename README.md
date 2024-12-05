@@ -22,7 +22,7 @@ python manage.py runserver # starts Django server
 
 - Use the following command to load prepared data from fixture to see the site features:
   
-`python manage.py loaddata dataset.json`
+`python manage.py loaddata dump.json`
 
 - Before start server use the following command to collect static files:
 
