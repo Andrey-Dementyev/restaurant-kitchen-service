@@ -1,0 +1,573 @@
+[
+{
+    "model": "accounts.cook",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$Yurs8daprzwRtyq5TcHI0k$VmSs9Yh/i/zHJzjPRzLnOhCufBvaF6Tln1cGginXc8I=",
+        "last_login": "2024-12-03T13:06:19.170Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-11-30T10:52:43.102Z",
+        "years_of_experience": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_john",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.595Z",
+        "years_of_experience": 10,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_emily",
+        "first_name": "Emily",
+        "last_name": "Smith",
+        "email": "emily.smith@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.602Z",
+        "years_of_experience": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_michael",
+        "first_name": "Michael",
+        "last_name": "Brown",
+        "email": "michael.brown@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.602Z",
+        "years_of_experience": 8,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_sophia",
+        "first_name": "Sophia",
+        "last_name": "Taylor",
+        "email": "sophia.taylor@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.603Z",
+        "years_of_experience": 7,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_david",
+        "first_name": "David",
+        "last_name": "Johnson",
+        "email": "david.johnson@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.603Z",
+        "years_of_experience": 12,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_olivia",
+        "first_name": "Olivia",
+        "last_name": "Wilson",
+        "email": "olivia.wilson@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.604Z",
+        "years_of_experience": 6,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_liam",
+        "first_name": "Liam",
+        "last_name": "Martinez",
+        "email": "liam.martinez@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.604Z",
+        "years_of_experience": 9,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_isabella",
+        "first_name": "Isabella",
+        "last_name": "Anderson",
+        "email": "isabella.anderson@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.604Z",
+        "years_of_experience": 4,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$fakepasswordhash",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chef_noah",
+        "first_name": "Noah",
+        "last_name": "Harris",
+        "email": "noah.harris@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:25:12.604Z",
+        "years_of_experience": 15,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$4zuSjhGhrrrTwakpZI9YfT$ip+bpTQM/HMwhSV20a3iT+Aw8CZ9hP2QRgWRa06jlWI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "bob.bobovich",
+        "first_name": "Bob",
+        "last_name": "Bobovich",
+        "email": "bob@bobovich.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-30T19:34:54Z",
+        "years_of_experience": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.cook",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$9squMCnBxSIcaXySv1Ic80$D+pIFS3JX5XaL1hBzAZo3F02Naz7oMnZblKoFAkpSjI=",
+        "last_login": "2024-12-04T23:02:34.499Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "xapah39921@jonespal.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-12-03T11:44:56.774Z",
+        "years_of_experience": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 1,
+    "fields": {
+        "name": "Appetizer"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 2,
+    "fields": {
+        "name": "Main Course"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 3,
+    "fields": {
+        "name": "Dessert"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 4,
+    "fields": {
+        "name": "Soup"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 5,
+    "fields": {
+        "name": "Salad"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 6,
+    "fields": {
+        "name": "Breakfast"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 7,
+    "fields": {
+        "name": "Snack"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 8,
+    "fields": {
+        "name": "Beverage"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 9,
+    "fields": {
+        "name": "Specialty"
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 1,
+    "fields": {
+        "name": "Caesar Salad",
+        "description": "Crisp romaine lettuce with Caesar dressing and croutons.",
+        "price": "7.99",
+        "dish_type": 5,
+        "cooks": [
+            2,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 2,
+    "fields": {
+        "name": "Grilled Salmon",
+        "description": "Fresh salmon grilled to perfection, served with lemon butter sauce.",
+        "price": "15.99",
+        "dish_type": 2,
+        "cooks": [
+            3,
+            2
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 3,
+    "fields": {
+        "name": "Chocolate Lava Cake",
+        "description": "Warm chocolate cake with a gooey center, served with vanilla ice cream.",
+        "price": "6.99",
+        "dish_type": 3,
+        "cooks": [
+            3,
+            2
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 4,
+    "fields": {
+        "name": "Tomato Soup",
+        "description": "Rich and creamy tomato soup served with basil.",
+        "price": "5.99",
+        "dish_type": 4,
+        "cooks": [
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 5,
+    "fields": {
+        "name": "French Fries",
+        "description": "Crispy golden French fries with ketchup.",
+        "price": "3.49",
+        "dish_type": 7,
+        "cooks": [
+            6,
+            3
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 6,
+    "fields": {
+        "name": "Margherita Pizza",
+        "description": "Classic pizza with fresh tomatoes, mozzarella, and basil.",
+        "price": "12.50",
+        "dish_type": 2,
+        "cooks": [
+            9,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 7,
+    "fields": {
+        "name": "Beef Tacos",
+        "description": "Seasoned beef with fresh salsa, lettuce, and cheese.",
+        "price": "9.99",
+        "dish_type": 2,
+        "cooks": [
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 8,
+    "fields": {
+        "name": "Vegetable Stir-fry",
+        "description": "A medley of vegetables tossed in a tangy soy sauce.",
+        "price": "8.99",
+        "dish_type": 2,
+        "cooks": [
+            3,
+            2
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 9,
+    "fields": {
+        "name": "Minestrone Soup",
+        "description": "Hearty Italian soup with vegetables, beans, and pasta.",
+        "price": "7.99",
+        "dish_type": 4,
+        "cooks": [
+            8,
+            4
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 10,
+    "fields": {
+        "name": "Fruit Parfait",
+        "description": "Layers of fresh fruit, yogurt, and granola.",
+        "price": "5.50",
+        "dish_type": 6,
+        "cooks": [
+            3,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 11,
+    "fields": {
+        "name": "Chicken Wings",
+        "description": "Spicy and tangy wings served with ranch dip.",
+        "price": "10.99",
+        "dish_type": 7,
+        "cooks": [
+            9,
+            8
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 12,
+    "fields": {
+        "name": "Espresso",
+        "description": "Rich and aromatic Italian coffee.",
+        "price": "3.50",
+        "dish_type": 8,
+        "cooks": [
+            2,
+            8
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 13,
+    "fields": {
+        "name": "Strawberry Cheesecake",
+        "description": "Creamy cheesecake topped with fresh strawberries.",
+        "price": "6.99",
+        "dish_type": 3,
+        "cooks": [
+            4,
+            7
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 14,
+    "fields": {
+        "name": "Garlic Bread",
+        "description": "Crispy bread topped with garlic and butter.",
+        "price": "4.99",
+        "dish_type": 1,
+        "cooks": [
+            6,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 15,
+    "fields": {
+        "name": "Spinach Omelette",
+        "description": "Fluffy omelette filled with fresh spinach and cheese.",
+        "price": "7.99",
+        "dish_type": 6,
+        "cooks": [
+            8,
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 16,
+    "fields": {
+        "name": "Roast Chicken",
+        "description": "Juicy roast chicken with herbs and vegetables.",
+        "price": "13.99",
+        "dish_type": 2,
+        "cooks": [
+            3,
+            9
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 17,
+    "fields": {
+        "name": "Vanilla Ice Cream",
+        "description": "Creamy vanilla ice cream served with chocolate sauce.",
+        "price": "4.99",
+        "dish_type": 3,
+        "cooks": [
+            6,
+            4
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 18,
+    "fields": {
+        "name": "Veggie Wrap",
+        "description": "Whole wheat wrap filled with fresh vegetables and hummus.",
+        "price": "6.50",
+        "dish_type": 7,
+        "cooks": [
+            2,
+            7
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 19,
+    "fields": {
+        "name": "Caprese Salad",
+        "description": "Fresh tomatoes, mozzarella, basil, and balsamic glaze.",
+        "price": "8.50",
+        "dish_type": 5,
+        "cooks": [
+            9,
+            4
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 20,
+    "fields": {
+        "name": "Lemon Tart",
+        "description": "Zesty lemon tart with a buttery crust.",
+        "price": "5.99",
+        "dish_type": 3,
+        "cooks": [
+            6,
+            8
+        ]
+    }
+}
+]
