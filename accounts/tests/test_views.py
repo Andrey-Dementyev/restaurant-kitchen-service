@@ -1,6 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+
 from accounts.models import Cook
 
 User = get_user_model()
@@ -21,6 +24,49 @@ class RegisterViewTest(TestCase):
         })
         self.assertRedirects(response, reverse("accounts:login"))
         self.assertEqual(User.objects.filter(username="newuser").count(), 1)
+
+    def test_register_with_missing_data(self):
+        response = self.client.post(reverse("accounts:register"), {"username": ""})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "This field is required.")
+
+    def test_register_with_duplicate_email(self):
+        User.objects.create_user(username="existinguser", email="test@example.com", password="password123")
+        response = self.client.post(
+            reverse("accounts:register"),
+            {
+                "username": "newuser",
+                "email": "test@example.com",
+                "password1": "password123",
+                "password2": "password123",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "User with this Email already exists.")
+
+
+class ActivationViewTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser", password="password123", is_active=False
+        )
+        self.uid = urlsafe_base64_encode(force_bytes(self.user.pk))
+        self.token = "invalid_token"
+
+    def test_activation_with_invalid_token(self):
+        response = self.client.get(
+            reverse("accounts:activate", args=[self.uid, self.token])
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Activation link is invalid!")
+
+    def test_activation_with_invalid_uid(self):
+        invalid_uid = "invalid_uid"
+        response = self.client.get(
+            reverse("accounts:activate", args=[invalid_uid, self.token])
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Activation link is invalid!")
 
 
 class CookListViewTest(TestCase):

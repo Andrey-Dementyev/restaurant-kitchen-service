@@ -7,18 +7,34 @@ app_name = "accounts"
 
 urlpatterns = [
     path("", include("django.contrib.auth.urls")),
-    path("register/", views.register, name="register"),
-    path("activate/<str:uid>/<str:token>/", views.activate, name="activate"),
-
-    path("cooks/", views.CookListView.as_view(), name="cook-list"),
-    path("<int:pk>/", views.CookDetailView.as_view(), name="cook-detail"),
     path(
-        "<int:pk>/update/",
+        "register/",
+        views.RegisterView.as_view(),
+        name="register"
+    ),
+    path(
+        "activate/<str:uid>/<str:token>/",
+        views.ActivateAccountView.as_view(),
+        name="activate"
+    ),
+
+    path(
+        "cooks/",
+        views.CookListView.as_view(),
+        name="cook-list"
+    ),
+    path(
+        "cooks/<int:pk>/",
+        views.CookDetailView.as_view(),
+        name="cook-detail"
+    ),
+    path(
+        "cooks/<int:pk>/update/",
         views.CookUpdateView.as_view(),
         name="cook-update",
     ),
     path(
-        "<int:pk>/delete/",
+        "cooks/<int:pk>/delete/",
         views.CookDeleteView.as_view(),
         name="cook-delete",
     ),

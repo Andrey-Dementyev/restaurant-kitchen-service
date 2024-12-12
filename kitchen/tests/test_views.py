@@ -20,6 +20,10 @@ class IndexViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "kitchen/index.html")
 
+    def test_index_view_not_logged_in(self):
+        response = self.client.get(reverse("kitchen:index"))
+        self.assertEqual(response.status_code, 302)
+
 
 class DishTypeListViewTest(TestCase):
     def setUp(self):
@@ -35,6 +39,23 @@ class DishTypeListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "kitchen/dish_type_list.html")
         self.assertContains(response, "Appetizer")
+
+    def test_create_dish_type_with_missing_data(self):
+        response = self.client.post(reverse("kitchen:dish-type-create"), {})
+        self.assertEqual(response.status_code, 400)
+
+    def test_update_dish_type_with_invalid_id(self):
+        invalid_id = 999
+        response = self.client.post(
+            reverse("kitchen:dish-type-update", args=[invalid_id]),
+            {"name": "Updated Starter"},
+        )
+        self.assertEqual(response.status_code, 404)
+
+    def test_delete_dish_type_with_invalid_id(self):
+        invalid_id = 999
+        response = self.client.post(reverse("kitchen:dish-type-delete", args=[invalid_id]))
+        self.assertEqual(response.status_code, 404)
 
 
 class DishListViewTest(TestCase):
@@ -56,6 +77,25 @@ class DishListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "kitchen/dish_list.html")
         self.assertContains(response, "Spring Rolls")
+
+    def test_create_dish_with_missing_required_field(self):
+        response = self.client.post(
+            reverse("kitchen:dish-create"),
+            {"description": "Incomplete dish"},
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_update_dish_with_invalid_price(self):
+        response = self.client.post(
+            reverse("kitchen:dish-update", args=[self.dish.id]),
+            {"name": "Updated Salad", "price": "invalid_price"},
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_delete_dish_with_invalid_id(self):
+        invalid_id = 999
+        response = self.client.post(reverse("kitchen:dish-delete", args=[invalid_id]))
+        self.assertEqual(response.status_code, 404)
 
 
 class ToggleAssignToDishTest(TestCase):
@@ -92,3 +132,13 @@ class ToggleAssignToDishTest(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertNotIn(self.dish, self.cook.dishes.all())
+
+    def test_toggle_assign_dish_with_invalid_id(self):
+        invalid_id = 999
+        response = self.client.post(reverse("kitchen:toggle-dish-assign", args=[invalid_id]))
+        self.assertEqual(response.status_code, 404)
+
+    def test_toggle_assign_dish_not_logged_in(self):
+        self.client.logout()
+        response = self.client.post(reverse("kitchen:toggle-dish-assign", args=[self.dish.id]))
+        self.assertEqual(response.status_code, 302)

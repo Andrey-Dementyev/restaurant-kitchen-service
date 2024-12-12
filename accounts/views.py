@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views import generic
+from django.views import generic, View
 
 from accounts.forms import CookSearchForm, RegisterForm, CookUpdateForm
 from accounts.models import Cook
@@ -17,10 +17,16 @@ from accounts.services.token_service import account_activation_token
 User = get_user_model()
 
 
-def register(request):
-    form = RegisterForm(request.POST or None)
+class RegisterView(View):
+    template_name = "registration/register.html"
+    form_class = RegisterForm
 
-    if request.method == "POST":
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {"form": form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
@@ -40,31 +46,30 @@ def register(request):
             )
 
             messages.info(request, "Please confirm your activation")
-
             return redirect("accounts:login")
 
-    return render(request, "registration/register.html", {"form": form})
+        return render(request, self.template_name, {"form": form})
 
 
-def activate(request, uid, token):
-    try:
-        uid = force_str(urlsafe_base64_decode(uid))
-        user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
+class ActivateAccountView(View):
+    def get(self, request, uid, token):
+        try:
+            uid = force_str(urlsafe_base64_decode(uid))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
 
-    if user.is_active:
-        return HttpResponse("Your account is already activated")
+        if user and user.is_active:
+            return HttpResponse("Your account is already activated")
 
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
+        if user and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            return HttpResponse(
+                "Thank you for your email confirmation. "
+                "Now you can login your account."
+            )
 
-        return HttpResponse(
-            "Thank you for your email confirmation. "
-            "Now you can login your account."
-        )
-    else:
         return HttpResponse("Activation link is invalid!")
 
 
@@ -92,7 +97,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = User
-    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
+    queryset = Cook.objects.prefetch_related("dishes__dish_type")
 
 
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):

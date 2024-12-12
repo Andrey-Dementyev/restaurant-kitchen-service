@@ -6,7 +6,11 @@ from kitchen import views
 app_name = "kitchen"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path(
+        "",
+        views.IndexView.as_view(),
+        name="index"
+    ),
     path(
         "dish-types/",
         views.DishTypeListView.as_view(),
@@ -28,7 +32,11 @@ urlpatterns = [
         name="dish-type-delete"
     ),
 
-    path("dishes/", views.DishListView.as_view(), name="dish-list"),
+    path(
+        "dishes/",
+        views.DishListView.as_view(),
+        name="dish-list"
+    ),
     path(
         "dishes/<int:pk>/",
         views.DishDetailView.as_view(),
@@ -51,7 +59,7 @@ urlpatterns = [
     ),
     path(
         "dish/<int:pk>/toggle-assign/",
-        views.toggle_assign_to_dish,
+        views.ToggleAssignToDishView.as_view(),
         name="toggle-dish-assign",
     ),
 ]
